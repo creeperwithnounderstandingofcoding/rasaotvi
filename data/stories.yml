@@ -1,0 +1,62 @@
+version: "3.1"
+
+stories:
+
+- story: Basic Greeting - Happy Path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: Cheer Up User - Path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: Cheer Up User - Path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: inquire firm vi ask all missing info at once
+  steps:
+  - user: |
+      我想要高盛的vi
+    intent: firm_vi
+    entities:
+    - company: "高盛"
+    - vi_type: "vi"
+  - action: vi_info_form
+  - active_loop: vi_info_form
+  - action: action_listen
+  - user: |
+      2023年，IBD部门，Analyst岗位
+    intent: provide_all_missing_info
+    entities:
+    - year: "2023"
+    - department: "IBD"
+    - position: "Analyst"
+  - action: action_provide_firm_vi
+  - active_loop: null
+
+  - active_loop: null
+
+- story: user provides all info through form
+  steps:
+  - intent: firm_vi
+  - action: vi_info_form
+  - active_loop: vi_info_form
+  - action: action_listen  # 在此处添加 action_listen
+  - action: action_provide_firm_vi  # 将 action_provide_firm_vi 移动到这里
+  - active_loop: null

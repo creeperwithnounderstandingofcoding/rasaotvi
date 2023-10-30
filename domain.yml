@@ -1,0 +1,123 @@
+version: '3.1'
+
+intents:
+- affirm
+- bot_challenge
+- deny
+- firm_vi
+- goodbye
+- greet
+- mood_great
+- mood_unhappy
+- provide_department
+- provide_position
+- request_info
+- provide_all_missing_info
+
+entities:
+- company
+- year
+- department
+- position
+- vi_type
+
+slots:
+  company:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: company
+
+  year:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: year
+
+  department:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: department
+
+  position:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: position
+
+  vi_type:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: vi_type
+
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_details:
+  - text: 好的。你想要哪一年的和那一个部门和哪一个岗位的vi呢？
+  utter_ask_position:
+  - text: 好的，你想要哪个岗位的vi呢？
+  utter_ask_department:
+  - text: 好的，你想要哪个部门的vi呢？
+  utter_ask_year:
+  - text: 好的，你想要哪一年的vi呢？
+  utter_provide_department:
+  - text: 好的，你提供了部门信息。
+  utter_provide_position:
+  - text: 好的，你提供了岗位信息。
+  utter_ask_company:
+  - text: 你想查询哪家公司的信息？
+  utter_ask_vi_type:
+  - text: 你想要了解什么类型的vi信息？
+  utter_missing_info:
+  - text: 好的，请提供缺少的信息，以便我能帮助你。
+  utter_ask_all_missing_info:
+  - text: 好的，请提供年份、部门和岗位的信息。
+
+actions:
+- utter_ask_position
+- action_provide_firm_vi
+- utter_greet
+- utter_cheer_up
+- utter_did_that_help
+- utter_happy
+- utter_goodbye
+- utter_iamabot
+- utter_ask_details
+- utter_ask_department
+- utter_ask_year
+- utter_provide_department
+- utter_provide_position
+- utter_ask_company
+- utter_ask_vi_type
+- utter_missing_info
+- utter_ask_all_missing_info
+- validate_vi_info_form
+- vi_info_form
+
+
+forms:
+  vi_info_form:
+    required_slots:
+      - company
+      - year
+      - department
+      - position
+      - vi_type
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

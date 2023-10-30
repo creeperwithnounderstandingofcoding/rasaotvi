@@ -1,0 +1,52 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-company",
+      "2": "I-company",
+      "3": "L-company",
+      "4": "U-company",
+      "5": "B-department",
+      "6": "I-department",
+      "7": "L-department",
+      "8": "U-department",
+      "9": "B-position",
+      "10": "I-position",
+      "11": "L-position",
+      "12": "U-position",
+      "13": "B-vi_type",
+      "14": "I-vi_type",
+      "15": "L-vi_type",
+      "16": "U-vi_type",
+      "17": "B-year",
+      "18": "I-year",
+      "19": "L-year",
+      "20": "U-year",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-company": 1,
+      "I-company": 2,
+      "L-company": 3,
+      "U-company": 4,
+      "B-department": 5,
+      "I-department": 6,
+      "L-department": 7,
+      "U-department": 8,
+      "B-position": 9,
+      "I-position": 10,
+      "L-position": 11,
+      "U-position": 12,
+      "B-vi_type": 13,
+      "I-vi_type": 14,
+      "L-vi_type": 15,
+      "U-vi_type": 16,
+      "B-year": 17,
+      "I-year": 18,
+      "L-year": 19,
+      "U-year": 20,
+      "O": 0
+    },
+    "num_tags": 21
+  }
+]

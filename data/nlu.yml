@@ -1,0 +1,204 @@
+version: "3.1"
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+- intent: firm_vi
+  examples: |
+    - 我想知道[高盛](company)的[vi](vi_type)
+    - [高盛](company)的[vi](vi_type)
+    - 给我[gs](company)的[vi](vi_type)
+    - [gs](company) [vi](vi_type)
+    - 我要[高盛](company)的[vi](vi_type)
+    - 我想知道[高盛](company) [2023](year)的[IBD](department)岗位的[vi](vi_type)
+    - 我想要[2022](year)年[高盛](company)的[Asset Management](department)部门的[vi](vi_type)
+    - 给我[高盛](company) [2023](year) [Research](department)的[vi](vi_type)
+    - 我想要[高盛](company) [2023](year) [IBD](department)的[Summer Analyst](position)的[vi](vi_type)
+    - 给我[摩根士丹利](company) [2023](year) [Equity Research](department)的[Associate](position)的[vi](vi_type)
+    - 我想要[摩根大通](company) [2022](year) [Asset Management](department)的[Analyst](position)的[vi](vi_type)
+    - 我想要[花旗](company) [2023](year) [Investment Banking](department)的[Summer Analyst](position)的[vi](vi_type)
+    - 我能看一下[高盛](company) [2023](year) [Investment Banking](department)的[vi](vi_type)吗？
+    - 我想了解[高盛](company) [2022](year)的[Sales and Trading](department)部门的[vi](vi_type)。
+    - 显示[高盛](company) [2021](year)的[Research](department)的[vi](vi_type)。
+    - 我想看[高盛](company)的[Summer Analyst](position)的[vi](vi_type)。
+    - 请提供[高盛](company) [2023](year)的[Full Time Analyst](position)的[vi](vi_type)。
+    - 我想要[高盛](company) [2022](year) [Operations](department)的[vi](vi_type)。
+    - 可以给我[高盛](company) [2021](year) [Technology](department)的[vi](vi_type)吗？
+    - 我想查看[高盛](company) [2023](year)的[Human Resources](department)的[vi](vi_type)。
+    - 我想知道[高盛](company) [2022](year)的[Finance](department)的[vi](vi_type)内容。
+    - 请展示[高盛](company) [2021](year) [Audit](department)的[vi](vi_type)。
+    - 我要[高盛](company) [2023](year) [ibd](department) [summer analyst](position)的[vi](vi_type)
+    - 我要[高盛](company) [2023](year) [ib](department) [summer analyst](position)的[vi](vi_type)
+    - 我要[高盛](company) [2023](year) [ibd](department) [sa](position)的[vi](vi_type)
+    - 我要[高盛](company) [2023](year) [ibd](department) [summer analyst](position) [vi](vi_type)
+    - 我要[gs](company) [2023](year) [ibd](department) [summer analyst](position) [vi](vi_type)
+    - 我要[goldman](company) [2023](year) [ibd](department) [summer analyst](position) [vi](vi_type)
+    - 我要[goldman](company) [2023](year) [ib](department) [summer analyst](position) [vi](vi_type)
+    - 我要[goldman](company) [2023](year) [ib](department) [sa](position) [vi](vi_type)
+
+- intent: provide_department
+  examples: |
+    - [IBD](department)
+    - [ibd](department)
+    - [Investment Banking Division](department)
+    - [Asset Management](department)
+    - [AM](department)
+    - [Equity Research](department)
+    - [research](department)
+    - [Sales and Trading](department)
+    - [snt](department)
+    - [Technology](department)
+    - [Operations](department)
+    - [Human Resources](department)
+    - [Risk Management](department)
+    - [Legal](department)
+    - [Compliance](department)
+    - [Corporate Services](department)
+    - [Finance](department)
+    - [Audit](department)
+    - [Marketing and Communications](department)
+    - [Real Estate and Facilities Management](department)
+    - [投行](department)
+    - [投行部](department)
+    
+- intent: provide_position
+  examples: |
+    - [Summer Analyst](position)
+    - [Analyst](position)
+    - [Associate](position)
+    - [Vice President](position)
+    - [Executive Director](position)
+    - [Managing Director](position)
+    - [Intern](position)
+    - [Full Time Analyst](position)
+    - [Full Time Associate](position)
+    - [Technology Analyst](position)
+    - [Operations Analyst](position)
+    - [Human Resources Analyst](position)
+    - [Risk Management Analyst](position)
+    - [Legal Analyst](position)
+    - [Compliance Analyst](position)
+    - [Corporate Services Analyst](position)
+    - [Finance Analyst](position)
+    - [Audit Analyst](position)
+    - [Marketing and Communications Analyst](position)
+    - [Real Estate and Facilities Management Analyst](position)
+    - [暑期](position)
+    - [暑期岗位](position)
+    - [暑期实习](position)
+    - [实习](position)
+    - [intern](position)
+
+- intent: provide_all_missing_info
+  examples: |
+    - 是[2023](year) [IBD](department) [Summer Analyst](position)
+    - 是[2022](year) [Sales and Trading](department) [Full-time Analyst](position)
+    - 是[2021](year) [Research](department) [Associate](position)
+    - [2023](year) [IBD](department) [Summer Analyst](position)
+    - [2022](year) [Sales and Trading](department) [Full-time Analyst](position)
+    - [2021](year) [Research](department) [Associate](position)
+    - 是[投行](department) [暑期实习](position) [2023](year)
+    - 是[销售和交易](department) [全职分析师](position) [2022](year)
+    - 是[研究](department) [副总裁](position) [2021](year)
+    - [2023](year) [IBD](department) [Summer Analyst](position)
+    - [2022](year) [Technology](department) [Full Time Analyst](position)
+    - [高盛](company) [2023](year) [Investment Banking](department) [Analyst](position)
+    - [摩根士丹利](company) [2022](year) [Sales and Trading](department) [Summer Analyst](position)
+    - [2023](year) [Human Resources](department) [Intern](position)
+    - [花旗](company) [2021](year) [Asset Management](department) [Associate](position)
+    - [摩根大通](company) [2022](year) [Risk Management](department) [Analyst](position)
+    - [2023](year) [Equity Research](department) [Summer Analyst](position)
+    - [2022](year) [Operations](department) [Full Time Analyst](position)
+    - [高盛](company) [2021](year) [Legal](department) [Intern](position)
+    - [花旗](company) [2022](year) [Compliance](department) [Associate](position)
+    - [摩根士丹利](company) [2023](year) [Corporate Services](department) [Analyst](position)
+    - [摩根大通](company) [2022](year) [Finance](department) [Summer Analyst](position)
+    - [2021](year) [Audit](department) [Full Time Analyst](position)
+    - [高盛](company) [2023](year) [Marketing and Communications](department) [Intern](position)
+    - [花旗](company) [2022](year) [Real Estate and Facilities Management](department) [Associate](position)
+    - [2023](year) [Technology](department) [Full Time Analyst](position)
+    - [2022](year) [Operations](department) [Intern](position)
+    - [高盛](company) [2021](year) [Human Resources](department) [Analyst](position)
+    - [花旗](company) [2022](year) [Risk Management](department) [Summer Analyst](position)
+    - [2023](year) [ibd](department) [sa](position)
+    - [2023](year) [ibd](department) [sa](position)的vi
+    

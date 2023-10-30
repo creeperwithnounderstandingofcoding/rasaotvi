@@ -1,0 +1,254 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: happy path 1
+  steps:
+  - user: |
+      hello there!
+    intent: greet
+  - action: utter_greet
+  - user: |
+      amazing
+    intent: mood_great
+  - action: utter_happy
+
+- story: happy path 2
+  steps:
+  - user: |
+      hello there!
+    intent: greet
+  - action: utter_greet
+  - user: |
+      amazing
+    intent: mood_great
+  - action: utter_happy
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: sad path 1
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      not good
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      yes
+    intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      not good
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      not really
+    intent: deny
+  - action: utter_goodbye
+
+- story: sad path 3
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - user: |
+      very terrible
+    intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - user: |
+      no
+    intent: deny
+  - action: utter_goodbye
+
+- story: say goodbye
+  steps:
+  - user: |
+      bye-bye!
+    intent: goodbye
+  - action: utter_goodbye
+
+- story: bot challenge
+  steps:
+  - user: |
+      are you a bot?
+    intent: bot_challenge
+  - action: utter_iamabot
+
+- story: inquire firm vi with all details
+  steps:
+  - user: |
+      我想要高盛2023年IBD的Summer Analyst vi
+    intent: firm_vi
+    entities:
+    - company: "高盛"
+    - year: "2023"
+    - department: "IBD"
+    - position: "Summer Analyst"
+    - vi_type: "vi"
+  - action: action_provide_firm_vi
+
+- story: inquire firm vi missing year and position
+  steps:
+  - user: |
+      我想要高盛的IBD的vi
+    intent: firm_vi
+    entities:
+    - company: "高盛"
+    - department: "IBD"
+    - vi_type: "vi"
+  - action: action_provide_firm_vi
+  - action: utter_ask_year
+  - user: |
+      2023年
+    intent: firm_vi
+    entities:
+    - year: "2023"
+  - action: action_provide_firm_vi
+  - action: utter_ask_position
+  - user: |
+      Summer Analyst
+    intent: firm_vi
+    entities:
+    - position: "Summer Analyst"
+  - action: action_provide_firm_vi
+
+- story: inquire firm vi missing department
+  steps:
+  - user: |
+      我想要高盛2023年的vi
+    intent: firm_vi
+    entities:
+    - company: "高盛"
+    - year: "2023"
+    - vi_type: "vi"
+  - action: action_provide_firm_vi
+  - action: utter_ask_department
+  - user: |
+      IBD
+    intent: firm_vi
+    entities:
+    - department: "IBD"
+  - action: action_provide_firm_vi
+  - action: utter_ask_position
+  - user: |
+      Summer Analyst
+    intent: firm_vi
+    entities:
+    - position: "Summer Analyst"
+  - action: action_provide_firm_vi
+
+- story: inquire firm vi very vague
+  steps:
+  - user: |
+      我想要vi
+    intent: firm_vi
+    entities:
+    - vi_type: "vi"
+  - action: action_provide_firm_vi
+  - action: utter_ask_details
+  - user: |
+      高盛 2023年 IBD Summer Analyst
+    intent: firm_vi
+    entities:
+    - company: "高盛"
+    - year: "2023"
+    - department: "IBD"
+    - position: "Summer Analyst"
+  - action: action_provide_firm_vi
+
+- story: inquire firm vi with different company and missing details
+  steps:
+  - user: |
+      我想要摩根士丹利的vi
+    intent: firm_vi
+    entities:
+    - company: "摩根士丹利"
+    - vi_type: "vi"
+  - action: action_provide_firm_vi
+  - action: utter_ask_year
+  - user: |
+      2022年
+    intent: firm_vi
+    entities:
+    - year: "2022"
+  - action: action_provide_firm_vi
+  - action: utter_ask_department
+  - user: |
+      Asset Management
+    intent: provide_department
+    entities:
+    - department: "Asset Management"
+  - action: action_provide_firm_vi
+  - action: utter_ask_position
+  - user: |
+      Analyst
+    intent: provide_position
+    entities:
+    - position: "Analyst"
+  - action: action_provide_firm_vi
+
+- story: inquire firm vi with incorrect company name
+  steps:
+  - user: |
+      我想要花旗的vi
+    intent: firm_vi
+    entities:
+    - company: "花旗"
+    - vi_type: "vi"
+  - action: action_provide_firm_vi
+  - action: utter_ask_year
+  - user: |
+      2023年
+    intent: firm_vi
+    entities:
+    - year: "2023"
+  - action: action_provide_firm_vi
+  - action: utter_ask_department
+  - user: |
+      IBD
+    intent: provide_department
+    entities:
+    - department: "IBD"
+  - action: action_provide_firm_vi
+  - action: utter_ask_position
+  - user: |
+      Summer Analyst
+    intent: provide_position
+    entities:
+    - position: "Summer Analyst"
+  - action: action_provide_firm_vi
+
+- story: inquire firm vi with only position provided
+  steps:
+  - user: |
+      我想要Summer Analyst的vi
+    intent: firm_vi
+    entities:
+    - position: "Summer Analyst"
+    - vi_type: "vi"
+  - action: action_provide_firm_vi
+  - action: utter_ask_details
+  - user: |
+      高盛 2023年 IBD
+    intent: firm_vi
+    entities:
+    - company: "高盛"
+    - year: "2023"
+    - department: "IBD"
+  - action: action_provide_firm_vi

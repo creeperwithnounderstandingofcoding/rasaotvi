@@ -1,0 +1,36 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Handle complete information provided at once
+  condition:
+  - active_loop: null
+  steps:
+  - intent: provide_all_missing_info
+  - action: vi_info_form
+  - active_loop: vi_info_form
+  - action: action_listen
+  - action: action_provide_firm_vi
+  - active_loop: null
+
+- rule: Handle firm vi inquiry with form
+  condition:
+  - active_loop: null
+  steps:
+  - intent: firm_vi
+  - action: vi_info_form
+  - active_loop: vi_info_form
+  - action: action_listen
+  - action: action_provide_firm_vi
+  - active_loop: null
+
